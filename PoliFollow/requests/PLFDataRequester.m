@@ -7,6 +7,7 @@
 //
 
 #import "PLFDataRequester.h"
+#import "Representative.h"
 
 
 //http://whoismyrepresentative.com/getall_mems.php?zip=10009
@@ -18,7 +19,13 @@ NSString * const MACRO_DATA_URL = @"whoismyrepresentative.com/getall_mems.php";
 
 + (id) getDataByZipCode:(NSString *)zip
 {
+    [self insertTempData];
     return @"";
+}
+
++ (void) insertTempData
+{
+    //Representative *rep1 = (Representative *)[NSEntityDescription insertNewObjectForEntityForName:@"Representative" inManagedObjectContext:<#(NSManagedObjectContext *)#>]
 }
 
 @end

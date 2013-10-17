@@ -42,6 +42,7 @@
 {
     NSLog(@"process zip");
     [PLFDataRequester getDataByZipCode:zipcodeField.text];
+    [self performSegueWithIdentifier:@"segueToMainNavController" sender:sender];
 }
 
 @end

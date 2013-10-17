@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller - My Representatives-->
+        <!--My Reps Table Controller - My Representatives-->
         <scene sceneID="Z33-Lg-Y7l">
             <objects>
-                <tableViewController id="oIS-5n-y2R" sceneMemberID="viewController">
+                <tableViewController id="oIS-5n-y2R" customClass="PLFMyRepsTableController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cya-GE-pOR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,7 +23,9 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Representatives" id="F9E-6P-Vti"/>
+                    <navigationItem key="navigationItem" title="My Representatives" id="F9E-6P-Vti">
+                        <barButtonItem key="rightBarButtonItem" title="Back" id="oUK-vP-Lrr"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vwZ-dx-zEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -52,9 +54,9 @@
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tq8-di-XCN">
-                                        <rect key="frame" x="137" y="256" width="46" height="30"/>
+                                        <rect key="frame" x="113" y="256" width="95" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button">
+                                        <state key="normal" title="Find my Reps">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -75,7 +77,7 @@
                     </view>
                     <connections>
                         <outlet property="zipcodeField" destination="HXU-UZ-mc9" id="I5R-FG-Exv"/>
-                        <segue destination="2ba-Ta-DQj" kind="push" id="tn7-vK-dAy"/>
+                        <segue destination="2ba-Ta-DQj" kind="modal" identifier="segueToMainNavController" id="tn7-vK-dAy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C3q-Sv-s64" userLabel="First Responder" sceneMemberID="firstResponder"/>

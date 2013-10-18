@@ -10,6 +10,8 @@
 
 @interface PLFFindRepController : UIViewController
 
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) IBOutlet UITextField *zipcodeField;
+
 
 @end

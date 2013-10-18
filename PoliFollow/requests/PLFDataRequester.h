@@ -10,7 +10,7 @@
 
 @interface PLFDataRequester : NSObject
 
-+ (id) getDataByZipCode:(NSString *)zip;
++ (id) getDataByZipCode:(NSString *)zip withContext:(NSManagedObjectContext *)context;
 
 
 @end

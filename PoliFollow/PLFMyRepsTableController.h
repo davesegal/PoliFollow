@@ -10,7 +10,7 @@
 
 @interface PLFMyRepsTableController : UITableViewController
 
-@property (nonatomic, strong) NSArray *repList;
+@property (nonatomic, strong) NSMutableArray *repList;
 @property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
 
 @end

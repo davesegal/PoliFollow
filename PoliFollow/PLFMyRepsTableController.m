@@ -8,6 +8,7 @@
 
 #import "PLFMyRepsTableController.h"
 #import "Representative.h"
+#import "CoreDataUtil.h"
 
 @interface PLFMyRepsTableController ()
 
@@ -31,18 +32,7 @@
 {
     [super viewDidLoad];
     
-    Representative* tmpRep1 = [Representative new];
-    tmpRep1.name = @"";
-    tmpRep1.email = @"";
-    tmpRep1.type = @"";
-    
-    Representative* tmpRep2 = [Representative alloc];
-    tmpRep2.name = @"Dave Segal";
-    
-    Representative* tmpRep3 = [Representative alloc];
-    tmpRep3.name = @"Dave Segal";
-    
-    repList = @[tmpRep1, tmpRep2, tmpRep3];
+    repList = [CoreDataUtil getObjectsForEntity:@"Representative" withSortKey:@"name" andSortAscending:YES andContext:managedObjectContext];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -74,9 +64,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation. Temp data
     // Return the number of rows in the section.
-    return 3;
+    return [repList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -7,6 +7,7 @@
 //
 
 #import "PLFAppDelegate.h"
+#import "PLFFindRepController.h"
 
 @implementation PLFAppDelegate
 
@@ -16,7 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
+    PLFFindRepController *rootView = (PLFFindRepController *) self.window.rootViewController;
+    rootView.managedObjectContext = self.managedObjectContext;
     return YES;
 }
 

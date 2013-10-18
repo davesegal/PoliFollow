@@ -8,6 +8,7 @@
 
 #import "PLFFindRepController.h"
 #import "PLFDataRequester.h"
+#import "PLFMyRepsTableController.h"
 
 @interface PLFFindRepController ()
 
@@ -15,7 +16,7 @@
 
 @implementation PLFFindRepController
 
-@synthesize zipcodeField;
+@synthesize managedObjectContext, zipcodeField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,8 +42,16 @@
 - (IBAction)proccessZipCode:(id)sender
 {
     NSLog(@"process zip");
-    [PLFDataRequester getDataByZipCode:zipcodeField.text];
+    [PLFDataRequester getDataByZipCode:zipcodeField.text withContext:managedObjectContext];
     [self performSegueWithIdentifier:@"segueToMainNavController" sender:sender];
 }
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    UINavigationController *navController = (UINavigationController *)[segue destinationViewController];
+    PLFMyRepsTableController *repsList = (PLFMyRepsTableController *)[[navController viewControllers] lastObject];
+    repsList.managedObjectContext = managedObjectContext;
+}
+
 
 @end

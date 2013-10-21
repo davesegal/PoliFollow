@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) IBOutlet UITextField *zipcodeField;
+@property (nonatomic, strong) IBOutlet UIButton *zipButton;
 
 
 @end

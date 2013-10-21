@@ -2,7 +2,7 @@
 //  User.m
 //  PoliFollow
 //
-//  Created by David Segal on 10/17/13.
+//  Created by David Segal on 10/20/13.
 //  Copyright (c) 2013 David Segal. All rights reserved.
 //
 
@@ -11,8 +11,8 @@
 
 @implementation User
 
-@dynamic zipCode;
 @dynamic district;
 @dynamic state;
+@dynamic zipCode;
 
 @end

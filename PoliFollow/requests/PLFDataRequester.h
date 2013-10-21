@@ -10,6 +10,8 @@
 
 @interface PLFDataRequester : NSObject
 
+FOUNDATION_EXTERN NSString *const PLFDataRequesterDidProcessDataNotification;
+
 + (id) getDataByZipCode:(NSString *)zip withContext:(NSManagedObjectContext *)context;
 
 

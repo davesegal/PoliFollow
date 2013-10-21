@@ -16,7 +16,7 @@
 
 @implementation PLFFindRepController
 
-@synthesize managedObjectContext, zipcodeField;
+@synthesize managedObjectContext, zipcodeField, zipButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,7 +30,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 	// Do any additional setup after loading the view.
+    zipButton.enabled = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,9 +43,18 @@
 
 - (IBAction)proccessZipCode:(id)sender
 {
-    NSLog(@"process zip");
+    zipButton.enabled = NO;
+
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(requestProcessed:) name:PLFDataRequesterDidProcessDataNotification object:nil];
     [PLFDataRequester getDataByZipCode:zipcodeField.text withContext:managedObjectContext];
-    [self performSegueWithIdentifier:@"segueToMainNavController" sender:sender];
+    
+    
+    UIActivityIndicatorView *activityView=[[UIActivityIndicatorView alloc]     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityView.center=self.view.center;
+    [activityView startAnimating];
+    [self.view addSubview:activityView];
+    
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -53,5 +64,16 @@
     repsList.managedObjectContext = managedObjectContext;
 }
 
+- (void)requestProcessed:(NSNotification *)notification
+{
+    // remove activity indicator
+    [[[self.view subviews] lastObject] removeFromSuperview];
+    
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc removeObserver:self name:PLFDataRequesterDidProcessDataNotification object:self];
+    [self performSegueWithIdentifier:@"segueToMainNavController" sender:self];
+    
+    zipButton.enabled = YES;
+}
 
 @end

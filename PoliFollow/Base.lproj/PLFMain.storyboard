@@ -24,12 +24,16 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Representatives" id="F9E-6P-Vti">
-                        <barButtonItem key="rightBarButtonItem" title="Back" id="oUK-vP-Lrr"/>
+                        <barButtonItem key="rightBarButtonItem" title="Back" id="oUK-vP-Lrr">
+                            <connections>
+                                <action selector="returnToFindByLocation:" destination="oIS-5n-y2R" id="hVG-AF-NtS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vwZ-dx-zEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="674" y="106"/>
+            <point key="canvasLocation" x="1366" y="120"/>
         </scene>
         <!--Find Rep Controller-->
         <scene sceneID="7zU-ys-c0M">
@@ -75,30 +79,35 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="oKD-lL-K67"/>
                     <connections>
+                        <outlet property="zipButton" destination="Tq8-di-XCN" id="XLo-Ar-Cin"/>
                         <outlet property="zipcodeField" destination="HXU-UZ-mc9" id="I5R-FG-Exv"/>
-                        <segue destination="2ba-Ta-DQj" kind="modal" identifier="segueToMainNavController" id="tn7-vK-dAy"/>
+                        <segue destination="pCE-DL-QcS" kind="modal" identifier="segueToMainNavController" id="Rkh-IH-FtU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C3q-Sv-s64" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-270" y="106"/>
+            <point key="canvasLocation" x="256" y="106"/>
         </scene>
-        <!--Main Nav Controller-->
-        <scene sceneID="ESk-2L-rqF">
+        <!--Navigation Controller-->
+        <scene sceneID="3lJ-8f-2bf">
             <objects>
-                <navigationController definesPresentationContext="YES" id="2ba-Ta-DQj" customClass="PLFMainNavController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="06m-Ki-aJg"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Byf-Uc-cUi">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pCE-DL-QcS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="7Ep-Ee-Yuu"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tsL-xq-lCM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="oIS-5n-y2R" kind="relationship" relationship="rootViewController" id="s9x-HP-jtT"/>
+                        <segue destination="oIS-5n-y2R" kind="relationship" relationship="rootViewController" id="Eu9-AU-2nF"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="X95-Yy-Ucb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PbI-oy-soc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="210" y="106"/>
+            <point key="canvasLocation" x="840" y="120"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

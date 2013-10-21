@@ -87,7 +87,22 @@
     
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc removeObserver:self name:PLFDataRequesterDidProcessDataNotification object:self];
-    [self performSegueWithIdentifier:@"segueToMainNavController" sender:self];
+    
+    if ([notification.userInfo[PLFDataRequesterRequestSuccessKey]  isEqual: @"YES"] )
+    {
+        [self performSegueWithIdentifier:@"segueToMainNavController" sender:self];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No info available"
+                                                        message:@"Make sure you have a legitimate zip code."
+                                                       delegate:self
+                                              cancelButtonTitle: @"OK"
+                                              otherButtonTitles: nil];
+        [alert show];
+        zipcodeField.text = @"";
+        
+    }
     
     zipButton.enabled = YES;
 }

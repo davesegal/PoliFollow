@@ -20,6 +20,7 @@ NSString *const MACRO_REPS_BY_STATE = @"http://whoismyrepresentative.com/getall_
 NSString *const MACRO_SENS_BY_STATE = @"http://whoismyrepresentative.com/getall_sens_bystate.php";
 
 NSString *const PLFDataRequesterDidProcessDataNotification = @"PLFDataRequesterDidProcessData";
+NSString *const PLFDataRequesterRequestSuccessKey = @"PLFDataRequesterRequestSuccessKey";
 
 @implementation PLFDataRequester
 
@@ -44,6 +45,7 @@ NSString *const PLFDataRequesterDidProcessDataNotification = @"PLFDataRequesterD
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     NSDictionary *parameters = @{@"zip": zip, @"output":@"json"};
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [manager POST:urlString parameters:parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               //NSLog(@"JSON: %@", responseObject);
@@ -60,17 +62,20 @@ NSString *const PLFDataRequesterDidProcessDataNotification = @"PLFDataRequesterD
                   rep1.state = item[@"state"];
 
               }
+              
               NSError *error;
               if (! [context save:&error])
+              {
                   NSLog(@"Failed to save rep with error: %@", error.domain);
+                  [nc postNotificationName:PLFDataRequesterDidProcessDataNotification object:self userInfo:@{PLFDataRequesterRequestSuccessKey: @"NO"}];
+              }
               
-              NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-              [nc postNotificationName:PLFDataRequesterDidProcessDataNotification object:self userInfo:@{@"success": @YES}];
-              
+              [nc postNotificationName:PLFDataRequesterDidProcessDataNotification object:self userInfo:@{PLFDataRequesterRequestSuccessKey: @"YES"}];
               
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
+              NSLog(@"Error: %@", error);
+              [nc postNotificationName:PLFDataRequesterDidProcessDataNotification object:self userInfo:@{PLFDataRequesterRequestSuccessKey: @"NO"}];
     }];
 
     return @"";

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PLFFindRepController : UIViewController
+@interface PLFFindRepController : UIViewController <UIAlertViewDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) IBOutlet UITextField *zipcodeField;

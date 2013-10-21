@@ -11,6 +11,9 @@
 #import "PLFMyRepsTableController.h"
 
 @interface PLFFindRepController ()
+{
+    UIActivityIndicatorView *activityView;
+}
 
 @end
 
@@ -35,6 +38,16 @@
     zipButton.enabled = YES;
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -50,7 +63,7 @@
     [PLFDataRequester getDataByZipCode:zipcodeField.text withContext:managedObjectContext];
     
     
-    UIActivityIndicatorView *activityView=[[UIActivityIndicatorView alloc]     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityView=[[UIActivityIndicatorView alloc]     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     activityView.center=self.view.center;
     [activityView startAnimating];
     [self.view addSubview:activityView];
@@ -67,7 +80,10 @@
 - (void)requestProcessed:(NSNotification *)notification
 {
     // remove activity indicator
-    [[[self.view subviews] lastObject] removeFromSuperview];
+    //[[[self.view subviews] lastObject] removeFromSuperview];
+    
+    [activityView stopAnimating];
+    [activityView removeFromSuperview];
     
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc removeObserver:self name:PLFDataRequesterDidProcessDataNotification object:self];

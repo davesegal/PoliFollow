@@ -10,8 +10,9 @@
 		44283642181197F000B6FFF9 /* CoreDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 44283641181197F000B6FFF9 /* CoreDataUtil.m */; };
 		4428364518147D8800B6FFF9 /* Representative.m in Sources */ = {isa = PBXBuildFile; fileRef = 4428364418147D8800B6FFF9 /* Representative.m */; };
 		4428364818147D8A00B6FFF9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4428364718147D8A00B6FFF9 /* User.m */; };
-		442836521816242900B6FFF9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4428364F1816242900B6FFF9 /* .gitignore */; };
 		442836531816242900B6FFF9 /* PLFAPIKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 442836511816242900B6FFF9 /* PLFAPIKeys.m */; };
+		4428365E1816D08500B6FFF9 /* PLFDataRequestNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 4428365B1816D08500B6FFF9 /* PLFDataRequestNotifications.m */; };
+		4428365F1816D08500B6FFF9 /* PLFSunlightDataRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 4428365D1816D08500B6FFF9 /* PLFSunlightDataRequester.m */; };
 		447B4A1E1807538000EF07D4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 447B4A1D1807538000EF07D4 /* Foundation.framework */; };
 		447B4A201807538000EF07D4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 447B4A1F1807538000EF07D4 /* CoreGraphics.framework */; };
 		447B4A221807538000EF07D4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 447B4A211807538000EF07D4 /* UIKit.framework */; };
@@ -54,9 +55,12 @@
 		4428364418147D8800B6FFF9 /* Representative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Representative.m; path = PoliFollow/CoreData/Representative.m; sourceTree = "<group>"; };
 		4428364618147D8A00B6FFF9 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = PoliFollow/CoreData/User.h; sourceTree = "<group>"; };
 		4428364718147D8A00B6FFF9 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = PoliFollow/CoreData/User.m; sourceTree = "<group>"; };
-		4428364F1816242900B6FFF9 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = APIKeys/.gitignore; sourceTree = "<group>"; };
 		442836501816242900B6FFF9 /* PLFAPIKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLFAPIKeys.h; path = APIKeys/PLFAPIKeys.h; sourceTree = "<group>"; };
 		442836511816242900B6FFF9 /* PLFAPIKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PLFAPIKeys.m; path = APIKeys/PLFAPIKeys.m; sourceTree = "<group>"; };
+		4428365A1816D08500B6FFF9 /* PLFDataRequestNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLFDataRequestNotifications.h; path = requests/PLFDataRequestNotifications.h; sourceTree = "<group>"; };
+		4428365B1816D08500B6FFF9 /* PLFDataRequestNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PLFDataRequestNotifications.m; path = requests/PLFDataRequestNotifications.m; sourceTree = "<group>"; };
+		4428365C1816D08500B6FFF9 /* PLFSunlightDataRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLFSunlightDataRequester.h; path = requests/PLFSunlightDataRequester.h; sourceTree = "<group>"; };
+		4428365D1816D08500B6FFF9 /* PLFSunlightDataRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PLFSunlightDataRequester.m; path = requests/PLFSunlightDataRequester.m; sourceTree = "<group>"; };
 		447B4A1A1807538000EF07D4 /* PoliFollow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoliFollow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		447B4A1D1807538000EF07D4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		447B4A1F1807538000EF07D4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -121,7 +125,6 @@
 		4428364E181623EA00B6FFF9 /* APIKeys */ = {
 			isa = PBXGroup;
 			children = (
-				4428364F1816242900B6FFF9 /* .gitignore */,
 				442836501816242900B6FFF9 /* PLFAPIKeys.h */,
 				442836511816242900B6FFF9 /* PLFAPIKeys.m */,
 			);
@@ -218,6 +221,10 @@
 		447B4A58180890EF00EF07D4 /* requests */ = {
 			isa = PBXGroup;
 			children = (
+				4428365A1816D08500B6FFF9 /* PLFDataRequestNotifications.h */,
+				4428365B1816D08500B6FFF9 /* PLFDataRequestNotifications.m */,
+				4428365C1816D08500B6FFF9 /* PLFSunlightDataRequester.h */,
+				4428365D1816D08500B6FFF9 /* PLFSunlightDataRequester.m */,
 				447B4A5C1808919F00EF07D4 /* PLFDataRequester.h */,
 				447B4A5D1808919F00EF07D4 /* PLFDataRequester.m */,
 			);
@@ -321,7 +328,6 @@
 				447B4A281807538100EF07D4 /* InfoPlist.strings in Resources */,
 				447B4A56180888BE00EF07D4 /* PLFLaunchImage@2x.png in Resources */,
 				447B4A57180888BE00EF07D4 /* PLFLaunchImage-i5@2x.png in Resources */,
-				442836521816242900B6FFF9 /* .gitignore in Resources */,
 				447B4A311807538100EF07D4 /* PLFMain.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,7 +389,9 @@
 				4428364818147D8A00B6FFF9 /* User.m in Sources */,
 				442836531816242900B6FFF9 /* PLFAPIKeys.m in Sources */,
 				447B4ABF181045B700EF07D4 /* PLFCoreData.xcdatamodeld in Sources */,
+				4428365F1816D08500B6FFF9 /* PLFSunlightDataRequester.m in Sources */,
 				447B4A67180DA72400EF07D4 /* PLFMainNavController.m in Sources */,
+				4428365E1816D08500B6FFF9 /* PLFDataRequestNotifications.m in Sources */,
 				447B4AC918105B2E00EF07D4 /* PLFMyRepsTableController.m in Sources */,
 				447B4A2E1807538100EF07D4 /* PLFAppDelegate.m in Sources */,
 			);

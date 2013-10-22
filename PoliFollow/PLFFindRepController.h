@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface PLFFindRepController : UIViewController <UIAlertViewDelegate>
+@interface PLFFindRepController : UIViewController <UIAlertViewDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) IBOutlet UITextField *zipcodeField;
 @property (nonatomic, strong) IBOutlet UIButton *zipButton;
+@property (nonatomic, strong) IBOutlet UIButton *useLocationButton;
 
 
 @end

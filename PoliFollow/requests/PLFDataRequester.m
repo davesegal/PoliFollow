@@ -9,6 +9,7 @@
 #import "PLFDataRequester.h"
 #import "Representative.h"
 #import "AFHTTPRequestOperationManager.h"
+#import "PLFDataRequestNotifications.h"
 
 
 //http://whoismyrepresentative.com/getall_mems.php?zip=10009
@@ -19,8 +20,6 @@ NSString *const MACRO_ALL_MEMBERS = @"http://whoismyrepresentative.com/getall_me
 NSString *const MACRO_REPS_BY_STATE = @"http://whoismyrepresentative.com/getall_reps_bystate.php";
 NSString *const MACRO_SENS_BY_STATE = @"http://whoismyrepresentative.com/getall_sens_bystate.php";
 
-NSString *const PLFDataRequesterDidProcessDataNotification = @"PLFDataRequesterDidProcessData";
-NSString *const PLFDataRequesterRequestSuccessKey = @"PLFDataRequesterRequestSuccessKey";
 
 @implementation PLFDataRequester
 

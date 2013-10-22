@@ -9,17 +9,19 @@
 #import "PLFFindRepController.h"
 #import "PLFDataRequester.h"
 #import "PLFMyRepsTableController.h"
+#import "PLFDataRequestNotifications.h"
 
 @interface PLFFindRepController ()
 {
     UIActivityIndicatorView *activityView;
+    CLLocationManager *locationManager;
 }
 
 @end
 
 @implementation PLFFindRepController
 
-@synthesize managedObjectContext, zipcodeField, zipButton;
+@synthesize managedObjectContext, zipcodeField, zipButton, useLocationButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,7 +37,11 @@
     [super viewDidLoad];
     
 	// Do any additional setup after loading the view.
-    zipButton.enabled = YES;
+    
+    locationManager = [[CLLocationManager alloc] init];
+	locationManager.delegate = self;
+	locationManager.distanceFilter = kCLDistanceFilterNone;
+	locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -46,6 +52,11 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    zipButton.enabled = YES;
+    useLocationButton.enabled = YES;
+    zipcodeField.enabled = YES;
+    zipcodeField.text = @"";
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,7 +67,9 @@
 
 - (IBAction)proccessZipCode:(id)sender
 {
+    zipcodeField.enabled = NO;
     zipButton.enabled = NO;
+    useLocationButton.enabled = NO;
 
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(requestProcessed:) name:PLFDataRequesterDidProcessDataNotification object:nil];
@@ -70,6 +83,33 @@
     
 }
 
+- (IBAction)getlocation:(id)sender {
+	
+    zipcodeField.enabled = NO;
+    zipButton.enabled = NO;
+    useLocationButton.enabled = NO;
+	[locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+	
+    UIAlertView *errorAlert = [[UIAlertView alloc]
+							   initWithTitle:@"Error" message:@"Failed to Get Your Location" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    // Call alert
+	[errorAlert show];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+	
+    [locationManager stopUpdatingLocation];
+    CLLocationCoordinate2D coordinate = [newLocation coordinate];
+    
+	NSLog(@"%@",  newLocation);
+	
+}
+
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     UINavigationController *navController = (UINavigationController *)[segue destinationViewController];
@@ -79,14 +119,11 @@
 
 - (void)requestProcessed:(NSNotification *)notification
 {
-    // remove activity indicator
-    //[[[self.view subviews] lastObject] removeFromSuperview];
-    
     [activityView stopAnimating];
     [activityView removeFromSuperview];
     
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc removeObserver:self name:PLFDataRequesterDidProcessDataNotification object:self];
+    [nc removeObserver:self name:PLFDataRequesterDidProcessDataNotification object:nil];
     
     if ([notification.userInfo[PLFDataRequesterRequestSuccessKey]  isEqual: @"YES"] )
     {
@@ -100,11 +137,17 @@
                                               cancelButtonTitle: @"OK"
                                               otherButtonTitles: nil];
         [alert show];
-        zipcodeField.text = @"";
-        
     }
     
+    
+}
+
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    zipcodeField.text = @"";
+    zipcodeField.enabled = YES;
     zipButton.enabled = YES;
+    useLocationButton.enabled = YES;
 }
 
 @end

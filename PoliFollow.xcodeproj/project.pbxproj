@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4403550E181862E80051E7C1 /* PLFAbstractDataRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 4403550D181862E80051E7C1 /* PLFAbstractDataRequester.m */; };
 		44283642181197F000B6FFF9 /* CoreDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 44283641181197F000B6FFF9 /* CoreDataUtil.m */; };
-		4428364518147D8800B6FFF9 /* Representative.m in Sources */ = {isa = PBXBuildFile; fileRef = 4428364418147D8800B6FFF9 /* Representative.m */; };
 		4428364818147D8A00B6FFF9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4428364718147D8A00B6FFF9 /* User.m */; };
 		442836531816242900B6FFF9 /* PLFAPIKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 442836511816242900B6FFF9 /* PLFAPIKeys.m */; };
 		4428365E1816D08500B6FFF9 /* PLFDataRequestNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 4428365B1816D08500B6FFF9 /* PLFDataRequestNotifications.m */; };
@@ -29,12 +29,13 @@
 		447B4A491807538100EF07D4 /* PoliFollowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 447B4A481807538100EF07D4 /* PoliFollowTests.m */; };
 		447B4A56180888BE00EF07D4 /* PLFLaunchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 447B4A54180888BE00EF07D4 /* PLFLaunchImage@2x.png */; };
 		447B4A57180888BE00EF07D4 /* PLFLaunchImage-i5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 447B4A55180888BE00EF07D4 /* PLFLaunchImage-i5@2x.png */; };
-		447B4A5E1808919F00EF07D4 /* PLFDataRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 447B4A5D1808919F00EF07D4 /* PLFDataRequester.m */; };
+		447B4A5E1808919F00EF07D4 /* PLFGenericDataRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 447B4A5D1808919F00EF07D4 /* PLFGenericDataRequester.m */; };
 		447B4A61180DA3FE00EF07D4 /* PLFFindRepController.m in Sources */ = {isa = PBXBuildFile; fileRef = 447B4A60180DA3FD00EF07D4 /* PLFFindRepController.m */; };
 		447B4A67180DA72400EF07D4 /* PLFMainNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 447B4A66180DA72400EF07D4 /* PLFMainNavController.m */; };
 		447B4AAA180DC83E00EF07D4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 447B4AA9180DC83E00EF07D4 /* CoreData.framework */; };
 		447B4ABF181045B700EF07D4 /* PLFCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 447B4ABD181045B700EF07D4 /* PLFCoreData.xcdatamodeld */; };
 		447B4AC918105B2E00EF07D4 /* PLFMyRepsTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 447B4AC818105B2E00EF07D4 /* PLFMyRepsTableController.m */; };
+		44CB28FF1818D0D9007EF010 /* Representative.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB28FE1818D0D9007EF010 /* Representative.m */; };
 		B18E76DE31EB46C99A267ED0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 864364F0C3144D5BA2E9876F /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -49,10 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4403550C181862E80051E7C1 /* PLFAbstractDataRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLFAbstractDataRequester.h; path = requests/PLFAbstractDataRequester.h; sourceTree = "<group>"; };
+		4403550D181862E80051E7C1 /* PLFAbstractDataRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PLFAbstractDataRequester.m; path = requests/PLFAbstractDataRequester.m; sourceTree = "<group>"; };
 		44283640181197F000B6FFF9 /* CoreDataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataUtil.h; path = PoliFollow/CoreData/CoreDataUtil.h; sourceTree = "<group>"; };
 		44283641181197F000B6FFF9 /* CoreDataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataUtil.m; path = PoliFollow/CoreData/CoreDataUtil.m; sourceTree = "<group>"; };
-		4428364318147D8800B6FFF9 /* Representative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Representative.h; path = PoliFollow/CoreData/Representative.h; sourceTree = "<group>"; };
-		4428364418147D8800B6FFF9 /* Representative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Representative.m; path = PoliFollow/CoreData/Representative.m; sourceTree = "<group>"; };
 		4428364618147D8A00B6FFF9 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = PoliFollow/CoreData/User.h; sourceTree = "<group>"; };
 		4428364718147D8A00B6FFF9 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = PoliFollow/CoreData/User.m; sourceTree = "<group>"; };
 		442836501816242900B6FFF9 /* PLFAPIKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLFAPIKeys.h; path = APIKeys/PLFAPIKeys.h; sourceTree = "<group>"; };
@@ -82,8 +83,8 @@
 		447B4A481807538100EF07D4 /* PoliFollowTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliFollowTests.m; sourceTree = "<group>"; };
 		447B4A54180888BE00EF07D4 /* PLFLaunchImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLFLaunchImage@2x.png"; sourceTree = "<group>"; };
 		447B4A55180888BE00EF07D4 /* PLFLaunchImage-i5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLFLaunchImage-i5@2x.png"; sourceTree = "<group>"; };
-		447B4A5C1808919F00EF07D4 /* PLFDataRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLFDataRequester.h; path = requests/PLFDataRequester.h; sourceTree = "<group>"; };
-		447B4A5D1808919F00EF07D4 /* PLFDataRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PLFDataRequester.m; path = requests/PLFDataRequester.m; sourceTree = "<group>"; };
+		447B4A5C1808919F00EF07D4 /* PLFGenericDataRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLFGenericDataRequester.h; path = requests/PLFGenericDataRequester.h; sourceTree = "<group>"; };
+		447B4A5D1808919F00EF07D4 /* PLFGenericDataRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PLFGenericDataRequester.m; path = requests/PLFGenericDataRequester.m; sourceTree = "<group>"; };
 		447B4A5F180DA3FD00EF07D4 /* PLFFindRepController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLFFindRepController.h; sourceTree = "<group>"; };
 		447B4A60180DA3FD00EF07D4 /* PLFFindRepController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLFFindRepController.m; sourceTree = "<group>"; };
 		447B4A65180DA72400EF07D4 /* PLFMainNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLFMainNavController.h; sourceTree = "<group>"; };
@@ -92,6 +93,8 @@
 		447B4ABE181045B700EF07D4 /* PLFCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PLFCoreData.xcdatamodel; sourceTree = "<group>"; };
 		447B4AC718105B2E00EF07D4 /* PLFMyRepsTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLFMyRepsTableController.h; sourceTree = "<group>"; };
 		447B4AC818105B2E00EF07D4 /* PLFMyRepsTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLFMyRepsTableController.m; sourceTree = "<group>"; };
+		44CB28FD1818D0D9007EF010 /* Representative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Representative.h; path = PoliFollow/CoreData/Representative.h; sourceTree = "<group>"; };
+		44CB28FE1818D0D9007EF010 /* Representative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Representative.m; path = PoliFollow/CoreData/Representative.m; sourceTree = "<group>"; };
 		864364F0C3144D5BA2E9876F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65756EA1E1F4A78A6A7B53C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -225,8 +228,10 @@
 				4428365B1816D08500B6FFF9 /* PLFDataRequestNotifications.m */,
 				4428365C1816D08500B6FFF9 /* PLFSunlightDataRequester.h */,
 				4428365D1816D08500B6FFF9 /* PLFSunlightDataRequester.m */,
-				447B4A5C1808919F00EF07D4 /* PLFDataRequester.h */,
-				447B4A5D1808919F00EF07D4 /* PLFDataRequester.m */,
+				447B4A5C1808919F00EF07D4 /* PLFGenericDataRequester.h */,
+				447B4A5D1808919F00EF07D4 /* PLFGenericDataRequester.m */,
+				4403550C181862E80051E7C1 /* PLFAbstractDataRequester.h */,
+				4403550D181862E80051E7C1 /* PLFAbstractDataRequester.m */,
 			);
 			name = requests;
 			sourceTree = "<group>";
@@ -234,9 +239,9 @@
 		447B4AC01810474D00EF07D4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				44CB28FD1818D0D9007EF010 /* Representative.h */,
+				44CB28FE1818D0D9007EF010 /* Representative.m */,
 				447B4ABD181045B700EF07D4 /* PLFCoreData.xcdatamodeld */,
-				4428364318147D8800B6FFF9 /* Representative.h */,
-				4428364418147D8800B6FFF9 /* Representative.m */,
 				4428364618147D8A00B6FFF9 /* User.h */,
 				4428364718147D8A00B6FFF9 /* User.m */,
 				44283640181197F000B6FFF9 /* CoreDataUtil.h */,
@@ -383,10 +388,11 @@
 				447B4A61180DA3FE00EF07D4 /* PLFFindRepController.m in Sources */,
 				447B4A341807538100EF07D4 /* PLFViewController.m in Sources */,
 				44283642181197F000B6FFF9 /* CoreDataUtil.m in Sources */,
-				447B4A5E1808919F00EF07D4 /* PLFDataRequester.m in Sources */,
+				447B4A5E1808919F00EF07D4 /* PLFGenericDataRequester.m in Sources */,
+				44CB28FF1818D0D9007EF010 /* Representative.m in Sources */,
 				447B4A2A1807538100EF07D4 /* main.m in Sources */,
-				4428364518147D8800B6FFF9 /* Representative.m in Sources */,
 				4428364818147D8A00B6FFF9 /* User.m in Sources */,
+				4403550E181862E80051E7C1 /* PLFAbstractDataRequester.m in Sources */,
 				442836531816242900B6FFF9 /* PLFAPIKeys.m in Sources */,
 				447B4ABF181045B700EF07D4 /* PLFCoreData.xcdatamodeld in Sources */,
 				4428365F1816D08500B6FFF9 /* PLFSunlightDataRequester.m in Sources */,

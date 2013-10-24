@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PLFAbstractDataRequester.h"
 
-@interface PLFDataRequester : NSObject
+@interface PLFGenericDataRequester : PLFAbstractDataRequester
 
 
-+ (id) getDataByZipCode:(NSString *)zip withContext:(NSManagedObjectContext *)context;
++ (void)getDataByZipCode:(NSString *)zip withContext:(NSManagedObjectContext *)context;
 
 
 @end

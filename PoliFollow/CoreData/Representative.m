@@ -2,7 +2,7 @@
 //  Representative.m
 //  PoliFollow
 //
-//  Created by David Segal on 10/20/13.
+//  Created by David Segal on 10/23/13.
 //  Copyright (c) 2013 David Segal. All rights reserved.
 //
 
@@ -11,14 +11,17 @@
 
 @implementation Representative
 
+@dynamic district;
 @dynamic email;
 @dynamic name;
-@dynamic type;
-@dynamic district;
-@dynamic urlLink;
-@dynamic address;
 @dynamic party;
-@dynamic phoneNumber;
+@dynamic phone;
 @dynamic state;
+@dynamic urlLink;
+@dynamic chamber;
+@dynamic address;
+@dynamic website;
+@dynamic firstName;
+@dynamic lastName;
 
 @end

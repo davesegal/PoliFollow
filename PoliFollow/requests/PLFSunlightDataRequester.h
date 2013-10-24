@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PLFAbstractDataRequester.h"
 
-@interface PLFSunlightDataRequester : NSObject
+@interface PLFSunlightDataRequester : PLFAbstractDataRequester
 
 @end

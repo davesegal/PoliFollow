@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 David Segal. All rights reserved.
 //
 
-#import "PLFDataRequester.h"
+#import "PLFGenericDataRequester.h"
 #import "Representative.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "PLFDataRequestNotifications.h"
@@ -21,23 +21,13 @@ NSString *const MACRO_REPS_BY_STATE = @"http://whoismyrepresentative.com/getall_
 NSString *const MACRO_SENS_BY_STATE = @"http://whoismyrepresentative.com/getall_sens_bystate.php";
 
 
-@implementation PLFDataRequester
+@implementation PLFGenericDataRequester
 
 
-+ (id) getDataByZipCode:(NSString *)zip withContext:(NSManagedObjectContext *)context
++ (void)getDataByZipCode:(NSString *)zip withContext:(NSManagedObjectContext *)context
 {
     
-    [self deleteTempData:context];
-    
-    /*
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    if ([prefs boolForKey:@"hasRunBefore"] != YES)
-    {
-        [prefs setBool:YES forKey:@"hasRunBefore"];
-        [prefs synchronize];
-        [self insertTempData:context];
-    }
-     */
+    [self deleteRepresentativeData:context];
     
     NSString *urlString = [NSString stringWithFormat:@"%@?zip=%@&output=json", MACRO_ALL_MEMBERS, zip];
     
@@ -57,7 +47,7 @@ NSString *const MACRO_SENS_BY_STATE = @"http://whoismyrepresentative.com/getall_
                   rep1.name = item[@"name"];
                   rep1.address = item[@"office"];
                   rep1.party = item[@"party"];
-                  rep1.phoneNumber = item[@"phone"];
+                  rep1.phone = item[@"phone"];
                   rep1.state = item[@"state"];
 
               }
@@ -77,61 +67,33 @@ NSString *const MACRO_SENS_BY_STATE = @"http://whoismyrepresentative.com/getall_
               [nc postNotificationName:PLFDataRequesterDidProcessDataNotification object:self userInfo:@{PLFDataRequesterRequestSuccessKey: @"NO"}];
     }];
 
-    return @"";
 }
 
 
-+ (void) insertTempData:(NSManagedObjectContext *)context
++ (void)insertTempData:(NSManagedObjectContext *)context
 {
     
     Representative *rep1 = (Representative *)[NSEntityDescription insertNewObjectForEntityForName:@"Representative" inManagedObjectContext:context];
     rep1.name = @"Doug Stover";
     rep1.email = @"doug@house.gov";
-    rep1.type = @"House";
+    //rep1.type = @"House";
     
     
     Representative *rep2 = (Representative *)[NSEntityDescription insertNewObjectForEntityForName:@"Representative" inManagedObjectContext:context];
     rep2.name = @"Betty Stample";
     rep2.email = @"betty@house.gov";
-    rep2.type = @"House";
+    //rep2.type = @"House";
     
     
     Representative *rep3 = (Representative *)[NSEntityDescription insertNewObjectForEntityForName:@"Representative" inManagedObjectContext:context];
     rep3.name = @"Dawn Teltwent";
     rep3.email = @"dawn@house.gov";
-    rep3.type = @"House";
+    //rep3.type = @"House";
     
     NSError *error;
     if (! [context save:&error])
         NSLog(@"Failed to save rep with error: %@", error.domain);
     
-}
-
-+ (void) deleteTempData:(NSManagedObjectContext *)context
-{
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Representative" inManagedObjectContext:context];
-    [request setEntity:entity];
-    
-    [request setIncludesPropertyValues:NO];
-    
-    NSError *error;
-    NSArray *fetchRequests = [context executeFetchRequest:request error:&error];
-    
-    if (fetchRequests != nil)
-    {
-        for (NSManagedObject *managedObject in fetchRequests)
-        {
-            [context deleteObject:managedObject];
-        }
-    }
-    else
-    {
-        NSLog(@"No objects to delete for entity");
-    }
-    
-    if ( ![context save:&error] )
-         NSLog(@"Failed to save rep with error: %@", error.domain);
 }
 
 @end

@@ -7,7 +7,8 @@
 //
 
 #import "PLFFindRepController.h"
-#import "PLFDataRequester.h"
+#import "PLFGenericDataRequester.h"
+#import "PLFSunlightDataRequester.h"
 #import "PLFMyRepsTableController.h"
 #import "PLFDataRequestNotifications.h"
 
@@ -73,7 +74,7 @@
 
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(requestProcessed:) name:PLFDataRequesterDidProcessDataNotification object:nil];
-    [PLFDataRequester getDataByZipCode:zipcodeField.text withContext:managedObjectContext];
+    [PLFGenericDataRequester getDataByZipCode:zipcodeField.text withContext:managedObjectContext];
     
     
     activityView=[[UIActivityIndicatorView alloc]     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -89,6 +90,11 @@
     zipButton.enabled = NO;
     useLocationButton.enabled = NO;
 	[locationManager startUpdatingLocation];
+    
+    activityView=[[UIActivityIndicatorView alloc]     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityView.center=self.view.center;
+    [activityView startAnimating];
+    [self.view addSubview:activityView];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -105,8 +111,12 @@
 	
     [locationManager stopUpdatingLocation];
     CLLocationCoordinate2D coordinate = [newLocation coordinate];
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(requestProcessed:) name:PLFDataRequesterDidProcessDataNotification object:nil];
     
-	NSLog(@"%@",  newLocation);
+    [PLFSunlightDataRequester getDataByLocation:coordinate withContext:managedObjectContext];
+
+	//NSLog(@"%@",  newLocation);
 	
 }
 

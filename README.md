@@ -5,19 +5,12 @@ App to find representatives to the US government by location and zip code. To co
 
 Here is an example PLFAPIKeys header file.
 
-#import <Foundation/Foundation.h>
+\#import \<Foundation/Foundation.h\>
 
 @interface PLFAPIKeys : NSObject
 
-// NY Times api keys
-FOUNDATION_EXTERN NSString *const PLFAPIKeysArticleSearchKey;
-FOUNDATION_EXTERN NSString *const PLFAPIKeysCampaignFinanceKey;
-FOUNDATION_EXTERN NSString *const PLFAPIKeysCommunityKey;
-FOUNDATION_EXTERN NSString *const PLFAPIKeysCongressKey;
-FOUNDATION_EXTERN NSString *const PLFAPIKeysDistrictsKey;
-FOUNDATION_EXTERN NSString *const PLFAPIKeysNewswireKey;
-
 // Sunlight Foundation key
+
 FOUNDATION_EXTERN NSString *const PLFAPIKeysSunlightKey;
 
 @end

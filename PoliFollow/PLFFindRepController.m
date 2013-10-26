@@ -102,8 +102,9 @@
 	
     UIAlertView *errorAlert = [[UIAlertView alloc]
 							   initWithTitle:@"Error" message:@"Failed to Get Your Location" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    // Call alert
 	[errorAlert show];
+    
+    [locationManager stopUpdatingLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
@@ -116,7 +117,6 @@
     
     [PLFSunlightDataRequester getDataByLocation:coordinate withContext:managedObjectContext];
 
-	//NSLog(@"%@",  newLocation);
 	
 }
 
@@ -131,6 +131,7 @@
 {
     [activityView stopAnimating];
     [activityView removeFromSuperview];
+    
     
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc removeObserver:self name:PLFDataRequesterDidProcessDataNotification object:nil];
@@ -154,6 +155,9 @@
 
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
+    [activityView stopAnimating];
+    [activityView removeFromSuperview];
+    
     zipcodeField.text = @"";
     zipcodeField.enabled = YES;
     zipButton.enabled = YES;

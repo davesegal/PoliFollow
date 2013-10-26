@@ -9,6 +9,7 @@
 #import "PLFMyRepsTableController.h"
 #import "Representative.h"
 #import "CoreDataUtil.h"
+#import "PLFRepDetailViewController.h"
 
 @interface PLFMyRepsTableController ()
 
@@ -82,6 +83,11 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"segueToRepDetailViewController" sender:self];
+}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -121,7 +127,7 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -129,8 +135,8 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    PLFRepDetailViewController *repDetail = (PLFRepDetailViewController *)segue.destinationViewController;
 }
 
- */
 
 @end

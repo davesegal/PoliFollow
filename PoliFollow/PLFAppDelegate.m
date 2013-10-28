@@ -17,8 +17,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    PLFFindRepController *rootView = (PLFFindRepController *) self.window.rootViewController;
-    rootView.managedObjectContext = self.managedObjectContext;
+    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+     PLFFindRepController *controller = ( PLFFindRepController *)navigationController.topViewController;
+    controller.managedObjectContext = self.managedObjectContext;
+
     return YES;
 }
 

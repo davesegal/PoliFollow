@@ -122,8 +122,8 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    UINavigationController *navController = (UINavigationController *)[segue destinationViewController];
-    PLFMyRepsTableController *repsList = (PLFMyRepsTableController *)[[navController viewControllers] lastObject];
+    PLFMyRepsTableController *repsList = (PLFMyRepsTableController *)[segue destinationViewController];
+    //PLFMyRepsTableController *repsList = (PLFMyRepsTableController *)[[navController viewControllers] lastObject];
     repsList.managedObjectContext = managedObjectContext;
 }
 
@@ -138,7 +138,7 @@
     
     if ([notification.userInfo[PLFDataRequesterRequestSuccessKey]  isEqual: @"YES"] )
     {
-        [self performSegueWithIdentifier:@"segueToMainNavController" sender:self];
+        [self performSegueWithIdentifier:@"segueToRepTableViewController" sender:self];
     }
     else
     {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Sfm-Xz-Iry">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="YHQ-SR-HCe">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
@@ -23,20 +23,14 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Representatives" id="F9E-6P-Vti">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="oUK-vP-Lrr">
-                            <connections>
-                                <action selector="returnToFindByLocation:" destination="oIS-5n-y2R" id="hVG-AF-NtS"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="My Representatives" id="F9E-6P-Vti"/>
                     <connections>
                         <segue destination="Fww-Lu-N6o" kind="push" identifier="segueToRepDetailViewController" id="kxR-Da-p5A"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vwZ-dx-zEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1158" y="106"/>
+            <point key="canvasLocation" x="1192" y="106"/>
         </scene>
         <!--Rep Detail View Controller-->
         <scene sceneID="QBL-2X-NUC">
@@ -109,9 +103,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AMe-h5-fs7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1614" y="106"/>
+            <point key="canvasLocation" x="1596" y="106"/>
         </scene>
-        <!--Find Rep Controller-->
+        <!--Find Rep Controller - Find My Representatives-->
         <scene sceneID="7zU-ys-c0M">
             <objects>
                 <viewController id="Sfm-Xz-Iry" customClass="PLFFindRepController" sceneMemberID="viewController">
@@ -146,8 +140,8 @@
                                             <action selector="proccessZipCode:" destination="Sfm-Xz-Iry" eventType="touchUpInside" id="bIa-1f-KJI"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter your zip code" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJK-Tu-S5r">
-                                        <rect key="frame" x="86" y="253" width="149" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Use zip code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJK-Tu-S5r">
+                                        <rect key="frame" x="91" y="253" width="139" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
@@ -176,36 +170,35 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="oKD-lL-K67"/>
+                    <navigationItem key="navigationItem" title="Find My Representatives" id="oKD-lL-K67"/>
                     <connections>
                         <outlet property="useLocationButton" destination="abG-r3-7zo" id="ohP-8Z-yyU"/>
                         <outlet property="zipButton" destination="Tq8-di-XCN" id="XLo-Ar-Cin"/>
                         <outlet property="zipcodeField" destination="HXU-UZ-mc9" id="I5R-FG-Exv"/>
-                        <segue destination="pCE-DL-QcS" kind="modal" identifier="segueToMainNavController" id="Rkh-IH-FtU"/>
+                        <segue destination="oIS-5n-y2R" kind="push" identifier="segueToRepTableViewController" id="Jq8-gh-WLs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C3q-Sv-s64" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="256" y="106"/>
+            <point key="canvasLocation" x="782" y="106"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="3lJ-8f-2bf">
+        <scene sceneID="o4c-aj-eTZ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pCE-DL-QcS" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YHQ-SR-HCe" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="7Ep-Ee-Yuu"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tsL-xq-lCM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="B8d-NE-Pex">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="oIS-5n-y2R" kind="relationship" relationship="rootViewController" id="Eu9-AU-2nF"/>
+                        <segue destination="Sfm-Xz-Iry" kind="relationship" relationship="rootViewController" id="WFI-3B-Ntr"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PbI-oy-soc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lY6-Dl-lFX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="686" y="106"/>
+            <point key="canvasLocation" x="340" y="106"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

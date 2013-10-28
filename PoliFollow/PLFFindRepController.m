@@ -36,9 +36,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-	// Do any additional setup after loading the view.
-    
     locationManager = [[CLLocationManager alloc] init];
 	locationManager.delegate = self;
 	locationManager.distanceFilter = kCLDistanceFilterNone;
@@ -123,7 +120,6 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     PLFMyRepsTableController *repsList = (PLFMyRepsTableController *)[segue destinationViewController];
-    //PLFMyRepsTableController *repsList = (PLFMyRepsTableController *)[[navController viewControllers] lastObject];
     repsList.managedObjectContext = managedObjectContext;
 }
 
@@ -136,7 +132,7 @@
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc removeObserver:self name:PLFDataRequesterDidProcessDataNotification object:nil];
     
-    if ([notification.userInfo[PLFDataRequesterRequestSuccessKey]  isEqual: @"YES"] )
+    if ([notification.userInfo[PLFDataRequesterRequestSuccessKey]  isEqual: @YES] )
     {
         [self performSegueWithIdentifier:@"segueToRepTableViewController" sender:self];
     }

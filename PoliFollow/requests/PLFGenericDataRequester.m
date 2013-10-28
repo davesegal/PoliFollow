@@ -56,44 +56,20 @@ NSString *const MACRO_SENS_BY_STATE = @"http://whoismyrepresentative.com/getall_
               if (! [context save:&error])
               {
                   NSLog(@"Failed to save rep with error: %@", error.domain);
-                  [nc postNotificationName:PLFDataRequesterDidProcessDataNotification object:self userInfo:@{PLFDataRequesterRequestSuccessKey: @"NO"}];
+                  [nc postNotificationName:PLFDataRequesterDidProcessDataNotification object:self userInfo:@{PLFDataRequesterRequestSuccessKey: @NO}];
               }
               
-              [nc postNotificationName:PLFDataRequesterDidProcessDataNotification object:self userInfo:@{PLFDataRequesterRequestSuccessKey: @"YES"}];
+              [nc postNotificationName:PLFDataRequesterDidProcessDataNotification object:self userInfo:@{PLFDataRequesterRequestSuccessKey: @YES}];
               
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"Error: %@", error);
-              [nc postNotificationName:PLFDataRequesterDidProcessDataNotification object:self userInfo:@{PLFDataRequesterRequestSuccessKey: @"NO"}];
+              [nc postNotificationName:PLFDataRequesterDidProcessDataNotification object:self userInfo:@{PLFDataRequesterRequestSuccessKey: @NO}];
     }];
 
 }
 
 
-+ (void)insertTempData:(NSManagedObjectContext *)context
-{
-    
-    Representative *rep1 = (Representative *)[NSEntityDescription insertNewObjectForEntityForName:@"Representative" inManagedObjectContext:context];
-    rep1.name = @"Doug Stover";
-    rep1.email = @"doug@house.gov";
-    //rep1.type = @"House";
-    
-    
-    Representative *rep2 = (Representative *)[NSEntityDescription insertNewObjectForEntityForName:@"Representative" inManagedObjectContext:context];
-    rep2.name = @"Betty Stample";
-    rep2.email = @"betty@house.gov";
-    //rep2.type = @"House";
-    
-    
-    Representative *rep3 = (Representative *)[NSEntityDescription insertNewObjectForEntityForName:@"Representative" inManagedObjectContext:context];
-    rep3.name = @"Dawn Teltwent";
-    rep3.email = @"dawn@house.gov";
-    //rep3.type = @"House";
-    
-    NSError *error;
-    if (! [context save:&error])
-        NSLog(@"Failed to save rep with error: %@", error.domain);
-    
-}
+
 
 @end

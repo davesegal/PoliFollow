@@ -91,6 +91,28 @@
 }
 
 /*
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    
+    switch (section) {
+        case 0:
+            return @"US Senate";
+            
+        case 1:
+            return @"US House of Reps";
+        
+        case 2:
+            return @"State Reps";
+            
+            
+        default:
+            break;
+    };
+    return @"";
+}
+*/
+
+/*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {

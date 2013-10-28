@@ -85,7 +85,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"segueToRepDetailViewController" sender:self];
+    PLFRepDetailViewController *repDetailView = [[self storyboard] instantiateViewControllerWithIdentifier:@"PLFRepDetailViewController"];
+    repDetailView.representative = repList[indexPath.row];
+    [[self navigationController] pushViewController:repDetailView animated:YES];
 }
 
 /*
@@ -135,7 +137,10 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    PLFRepDetailViewController *repDetail = (PLFRepDetailViewController *)segue.destinationViewController;
+    //PLFRepDetailViewController *repDetail = (PLFRepDetailViewController *)segue.destinationViewController;
+    //repDetail.managedObjectContext = managedObjectContext;
+    
+    
 }
 
 

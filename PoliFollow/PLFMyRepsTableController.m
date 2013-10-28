@@ -8,6 +8,7 @@
 
 #import "PLFMyRepsTableController.h"
 #import "Representative.h"
+#import "Representative+PLFDataHelper.h"
 #import "CoreDataUtil.h"
 #import "PLFRepDetailViewController.h"
 
@@ -18,7 +19,7 @@
 
 @implementation PLFMyRepsTableController
 
-@synthesize repList, managedObjectContext;
+@synthesize repList, fedReps, fedSens, stateReps, managedObjectContext;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,6 +35,15 @@
     [super viewDidLoad];
     
     repList = [CoreDataUtil getObjectsForEntity:@"Representative" withSortKey:@"name" andSortAscending:YES andContext:managedObjectContext];
+    
+    NSPredicate *fedRepPredicate = [NSPredicate predicateWithFormat:@"category = %@", PLFRepresentiveFederalRep];
+    fedReps = [CoreDataUtil searchObjectsForEntity:@"Representative" withPredicate:fedRepPredicate andSortKey:@"name" andSortAscending:YES andContext:managedObjectContext];
+    
+    NSPredicate *fedSenPredicate = [NSPredicate predicateWithFormat:@"category = %@", PLFRepresentiveFederalSen];
+    fedSens = [CoreDataUtil searchObjectsForEntity:@"Representative" withPredicate:fedSenPredicate andSortKey:@"name" andSortAscending:YES andContext:managedObjectContext];
+    
+    NSPredicate *stateRepPredicate = [NSPredicate predicateWithFormat:@"category = %@", PLFRepresentiveStateRep];
+    stateReps = [CoreDataUtil searchObjectsForEntity:@"Representative" withPredicate:stateRepPredicate andSortKey:@"name" andSortAscending:YES andContext:managedObjectContext];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -60,12 +70,36 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    //NSInteger count = 0;
+    //if ([fedSens count] > 0) ++count;
+    
+    //if ([fedReps count] > 0) ++count;
+    
+    //if ([stateReps count] > 0) ++count;
+    
+    // TODO -- make error condition for count == 0
+    
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
+    switch (section) {
+        case 0:
+            return [fedSens count];
+        case 1:
+            return [fedReps count];
+        case 2:
+            return [stateReps count];
+        default:
+            return 0;
+    }
+    
+    if (section == 0) {
+        return [fedSens count];
+    }
+    
     return [repList count];
 }
 
@@ -73,10 +107,31 @@
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    Representative *rep;
+    switch (indexPath.section) {
+        case 0:
+            
+            rep = fedSens[indexPath.row];
+            cell.textLabel.text = rep.name;
+            break;
+            
+        case 1:
+            rep = fedReps[indexPath.row];
+            cell.textLabel.text = rep.name;
+            break;
+            
+        case 2:
+            rep = stateReps[indexPath.row];
+            cell.textLabel.text = rep.name;
+            break;
+            
+        default:
+            break;
+    };
+
     
-    Representative *rep = repList[indexPath.row];
     
-    cell.textLabel.text = rep.name;
+    
     
     // Configure the cell...
     
@@ -85,12 +140,29 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Representative *rep;
+    switch (indexPath.section) {
+        case 0:
+            rep = fedSens[indexPath.row];
+            break;
+            
+        case 1:
+            rep = fedReps[indexPath.row];
+            break;
+            
+        case 2:
+            rep = stateReps[indexPath.row];
+            break;
+            
+        default:
+            break;
+    };
+
     PLFRepDetailViewController *repDetailView = [[self storyboard] instantiateViewControllerWithIdentifier:@"PLFRepDetailViewController"];
-    repDetailView.representative = repList[indexPath.row];
+    repDetailView.representative = rep;
     [[self navigationController] pushViewController:repDetailView animated:YES];
 }
 
-/*
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     
@@ -110,7 +182,6 @@
     };
     return @"";
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.

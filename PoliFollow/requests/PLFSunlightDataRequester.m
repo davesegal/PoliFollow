@@ -8,6 +8,7 @@
 
 #import "PLFSunlightDataRequester.h"
 #import "Representative.h"
+#import "Representative+PLFDataHelper.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "PLFDataRequestNotifications.h"
 #import "PLFAPIKeys.h"
@@ -108,6 +109,7 @@ static BOOL isDataAvailable;
                  rep1.state = ( item[@"state"] == [NSNull null] ) ? @"" : item[@"state"];
                  rep1.facebookId = ( item[@"facebook_id"] == [NSNull null] ) ? @"" : item[@"facebook_id"];
                  rep1.twitterId = ( item[@"twitter_id"] == [NSNull null] ) ? @"" : item[@"twitter_id"];
+                 rep1.category = PLFRepresentiveStateRep;
              }
              
              NSError *error;
@@ -165,6 +167,7 @@ static BOOL isDataAvailable;
                  rep1.state = ( item[@"state"] == [NSNull null] ) ? @"" : item[@"state"];
                  rep1.facebookId = ( item[@"facebook_id"] == [NSNull null] ) ? @"" : item[@"facebook_id"];
                  rep1.twitterId = ( item[@"twitter_id"] == [NSNull null] ) ? @"" : item[@"twitter_id"];
+                 [rep1 populateRepCategory];
              }
              
              NSError *error;

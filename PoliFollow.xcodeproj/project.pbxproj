@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4400A5C8181DC5A600E53ADD /* Representative.m in Sources */ = {isa = PBXBuildFile; fileRef = 4400A5C7181DC5A600E53ADD /* Representative.m */; };
+		4400A5DC181EC4F400E53ADD /* Representative+PLFDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4400A5DB181EC4F400E53ADD /* Representative+PLFDataHelper.m */; };
+		4400A5DF181EC70300E53ADD /* Representative.m in Sources */ = {isa = PBXBuildFile; fileRef = 4400A5DE181EC70300E53ADD /* Representative.m */; };
 		4403550E181862E80051E7C1 /* PLFAbstractDataRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 4403550D181862E80051E7C1 /* PLFAbstractDataRequester.m */; };
 		44283642181197F000B6FFF9 /* CoreDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 44283641181197F000B6FFF9 /* CoreDataUtil.m */; };
 		4428364818147D8A00B6FFF9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4428364718147D8A00B6FFF9 /* User.m */; };
@@ -49,8 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4400A5C6181DC5A600E53ADD /* Representative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Representative.h; path = PoliFollow/CoreData/Representative.h; sourceTree = "<group>"; };
-		4400A5C7181DC5A600E53ADD /* Representative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Representative.m; path = PoliFollow/CoreData/Representative.m; sourceTree = "<group>"; };
+		4400A5DA181EC4F400E53ADD /* Representative+PLFDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Representative+PLFDataHelper.h"; path = "PoliFollow/CoreData/Representative+PLFDataHelper.h"; sourceTree = "<group>"; };
+		4400A5DB181EC4F400E53ADD /* Representative+PLFDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Representative+PLFDataHelper.m"; path = "PoliFollow/CoreData/Representative+PLFDataHelper.m"; sourceTree = "<group>"; };
+		4400A5DD181EC70300E53ADD /* Representative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Representative.h; path = PoliFollow/CoreData/Representative.h; sourceTree = "<group>"; };
+		4400A5DE181EC70300E53ADD /* Representative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Representative.m; path = PoliFollow/CoreData/Representative.m; sourceTree = "<group>"; };
 		4403550C181862E80051E7C1 /* PLFAbstractDataRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLFAbstractDataRequester.h; path = requests/PLFAbstractDataRequester.h; sourceTree = "<group>"; };
 		4403550D181862E80051E7C1 /* PLFAbstractDataRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PLFAbstractDataRequester.m; path = requests/PLFAbstractDataRequester.m; sourceTree = "<group>"; };
 		44283640181197F000B6FFF9 /* CoreDataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataUtil.h; path = PoliFollow/CoreData/CoreDataUtil.h; sourceTree = "<group>"; };
@@ -238,13 +241,15 @@
 		447B4AC01810474D00EF07D4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				4400A5DD181EC70300E53ADD /* Representative.h */,
+				4400A5DE181EC70300E53ADD /* Representative.m */,
 				447B4ABD181045B700EF07D4 /* PLFCoreData.xcdatamodeld */,
-				4400A5C6181DC5A600E53ADD /* Representative.h */,
-				4400A5C7181DC5A600E53ADD /* Representative.m */,
 				4428364618147D8A00B6FFF9 /* User.h */,
 				4428364718147D8A00B6FFF9 /* User.m */,
 				44283640181197F000B6FFF9 /* CoreDataUtil.h */,
 				44283641181197F000B6FFF9 /* CoreDataUtil.m */,
+				4400A5DA181EC4F400E53ADD /* Representative+PLFDataHelper.h */,
+				4400A5DB181EC4F400E53ADD /* Representative+PLFDataHelper.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -383,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				447B4A61180DA3FE00EF07D4 /* PLFFindRepController.m in Sources */,
+				4400A5DF181EC70300E53ADD /* Representative.m in Sources */,
 				447B4A341807538100EF07D4 /* PLFViewController.m in Sources */,
 				44CEB1BB181A3B62005B5DB5 /* PLFRepDetailViewController.m in Sources */,
 				44283642181197F000B6FFF9 /* CoreDataUtil.m in Sources */,
@@ -394,8 +400,8 @@
 				447B4ABF181045B700EF07D4 /* PLFCoreData.xcdatamodeld in Sources */,
 				4428365F1816D08500B6FFF9 /* PLFSunlightDataRequester.m in Sources */,
 				447B4A67180DA72400EF07D4 /* PLFMainNavController.m in Sources */,
-				4400A5C8181DC5A600E53ADD /* Representative.m in Sources */,
 				4428365E1816D08500B6FFF9 /* PLFDataRequestNotifications.m in Sources */,
+				4400A5DC181EC4F400E53ADD /* Representative+PLFDataHelper.m in Sources */,
 				447B4AC918105B2E00EF07D4 /* PLFMyRepsTableController.m in Sources */,
 				447B4A2E1807538100EF07D4 /* PLFAppDelegate.m in Sources */,
 			);

@@ -71,7 +71,7 @@
 
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(requestProcessed:) name:PLFDataRequesterDidProcessDataNotification object:nil];
-    [PLFGenericDataRequester getDataByZipCode:zipcodeField.text withContext:managedObjectContext];
+    [PLFSunlightDataRequester getDataByZipCode:zipcodeField.text withContext:managedObjectContext];
     
     
     activityView=[[UIActivityIndicatorView alloc]     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];

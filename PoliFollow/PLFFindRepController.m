@@ -94,6 +94,13 @@
     [self.view addSubview:activityView];
 }
 
+- (IBAction)goToMapView:(id)sender
+{
+    //segueToMapViewController
+    [self performSegueWithIdentifier:@"segueToMapViewController" sender:self];
+
+}
+
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
 	
@@ -119,8 +126,11 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    PLFMyRepsTableController *repsList = (PLFMyRepsTableController *)[segue destinationViewController];
-    repsList.managedObjectContext = managedObjectContext;
+    if ([segue.identifier isEqualToString:@"segueToRepTableViewController"])
+    {
+        PLFMyRepsTableController *repsList = (PLFMyRepsTableController *)[segue destinationViewController];
+        repsList.managedObjectContext = managedObjectContext;
+    }
 }
 
 - (void)requestProcessed:(NSNotification *)notification

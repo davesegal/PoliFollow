@@ -15,6 +15,7 @@
 @property (nonatomic, strong) IBOutlet UITextField *zipcodeField;
 @property (nonatomic, strong) IBOutlet UIButton *zipButton;
 @property (nonatomic, strong) IBOutlet UIButton *useLocationButton;
+@property (strong, nonatomic) IBOutlet UIButton *useMapButton;
 
 
 @end

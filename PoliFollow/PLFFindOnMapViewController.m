@@ -7,17 +7,22 @@
 //
 
 #import "PLFFindOnMapViewController.h"
+#import "PLFSunlightDataRequester.h"
+#import "PLFDataRequestNotifications.h"
+#import "PLFMyRepsTableController.h"
 
 @interface PLFFindOnMapViewController ()
 {
+    UIActivityIndicatorView *activityView;
     BOOL isUpdatingUserLocation;
+    
 }
 
 @end
 
 @implementation PLFFindOnMapViewController
 
-@synthesize mapView;
+@synthesize mapView, useMapLocationButton, managedObjectContext;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,14 +39,21 @@
     mapView.delegate = self;
     
     UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    lpgr.minimumPressDuration = 2.0; //user needs to press for 2 seconds
+    lpgr.minimumPressDuration = 1.0;
     [self.mapView addGestureRecognizer:lpgr];
     
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    self.navigationController.toolbarHidden = NO;
+    self.useMapLocationButton.enabled = YES;
     isUpdatingUserLocation = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    self.navigationController.toolbarHidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,7 +81,6 @@
     MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
     point.coordinate = location.coordinate;
     point.title = @"Find the Reps";
-    point.subtitle = @"tap here";
     
     [self.mapView addAnnotation:point];
 }
@@ -92,5 +103,55 @@
     [self moveToLocation:userLoc withAnimation:YES];
 }
 
+- (IBAction)useMapLocation:(id)sender
+{
+    activityView=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityView.center=self.view.center;
+    [activityView startAnimating];
+    [self.view addSubview:activityView];
+    
+    self.useMapLocationButton.enabled = NO;
+    MKPointAnnotation *point = [self.mapView  annotations][0];
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(requestProcessed:) name:PLFDataRequesterDidProcessDataNotification object:nil];
+    
+    [PLFSunlightDataRequester getDataByLocation:point.coordinate withContext:managedObjectContext];
+    
+}
+
+- (void)requestProcessed:(NSNotification *)notification
+{
+    [activityView stopAnimating];
+    [activityView removeFromSuperview];
+    
+    
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc removeObserver:self name:PLFDataRequesterDidProcessDataNotification object:nil];
+    
+    if ([notification.userInfo[PLFDataRequesterRequestSuccessKey]  isEqual: @YES] )
+    {
+        [self performSegueWithIdentifier:@"segueToRepTableViewController" sender:self];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No info available"
+                                                        message:@"There are no representatives there"
+                                                       delegate:self
+                                              cancelButtonTitle: @"OK"
+                                              otherButtonTitles: nil];
+        [alert show];
+        self.useMapLocationButton.enabled = YES;
+    }
+
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"segueToRepTableViewController"])
+    {
+        PLFMyRepsTableController *repsList = (PLFMyRepsTableController *)[segue destinationViewController];
+        repsList.managedObjectContext = managedObjectContext;
+    }
+}
 
 @end

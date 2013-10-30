@@ -11,6 +11,7 @@
 #import "PLFSunlightDataRequester.h"
 #import "PLFMyRepsTableController.h"
 #import "PLFDataRequestNotifications.h"
+#import "PLFFindOnMapViewController.h"
 
 @interface PLFFindRepController ()
 {
@@ -22,7 +23,7 @@
 
 @implementation PLFFindRepController
 
-@synthesize managedObjectContext, zipcodeField, zipButton, useLocationButton;
+@synthesize managedObjectContext, zipcodeField, zipButton, useLocationButton, scrollView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,6 +41,7 @@
 	locationManager.delegate = self;
 	locationManager.distanceFilter = kCLDistanceFilterNone;
 	locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    zipcodeField.delegate = self;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -74,10 +76,12 @@
     [PLFSunlightDataRequester getDataByZipCode:zipcodeField.text withContext:managedObjectContext];
     
     
-    activityView=[[UIActivityIndicatorView alloc]     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityView=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     activityView.center=self.view.center;
     [activityView startAnimating];
     [self.view addSubview:activityView];
+    
+    [self removeTextFieldObservers];
     
 }
 
@@ -88,7 +92,7 @@
     useLocationButton.enabled = NO;
 	[locationManager startUpdatingLocation];
     
-    activityView=[[UIActivityIndicatorView alloc]     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityView=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     activityView.center=self.view.center;
     [activityView startAnimating];
     [self.view addSubview:activityView];
@@ -104,8 +108,7 @@
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
 	
-    UIAlertView *errorAlert = [[UIAlertView alloc]
-							   initWithTitle:@"Error" message:@"Failed to Get Your Location" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to Get Your Location" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	[errorAlert show];
     
     [locationManager stopUpdatingLocation];
@@ -130,6 +133,11 @@
     {
         PLFMyRepsTableController *repsList = (PLFMyRepsTableController *)[segue destinationViewController];
         repsList.managedObjectContext = managedObjectContext;
+    }
+    else if ([segue.identifier isEqualToString:@"segueToMapViewController"])
+    {
+        PLFFindOnMapViewController *mapVC = (PLFFindOnMapViewController *)[segue destinationViewController];
+        mapVC.managedObjectContext = managedObjectContext;
     }
 }
 
@@ -169,5 +177,43 @@
     zipButton.enabled = YES;
     useLocationButton.enabled = YES;
 }
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    NSDictionary* info = [notification userInfo];
+    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0);
+    scrollView.contentInset = contentInsets;
+    
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= keyboardSize.height;
+    if (!CGRectContainsPoint(aRect, zipcodeField.frame.origin) ) {
+        [self.scrollView scrollRectToVisible:zipcodeField.frame animated:YES];
+    }
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    scrollView.contentInset = contentInsets;
+
+}
+
+- (void)removeTextFieldObservers
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+}
+
+
 
 @end

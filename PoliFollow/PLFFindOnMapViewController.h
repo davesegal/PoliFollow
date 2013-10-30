@@ -13,5 +13,8 @@
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *useMapLocationButton;
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

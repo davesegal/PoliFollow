@@ -22,5 +22,6 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @property (strong, nonatomic) Representative *representative;
+@property (strong, nonatomic) IBOutlet UIImageView *repImageView;
 
 @end

@@ -7,7 +7,8 @@
 //
 
 #import "PLFRepDetailViewController.h"
-#import "Representative.h"
+#import "Representative+PLFDataHelper.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface PLFRepDetailViewController ()
 
@@ -15,7 +16,7 @@
 
 @implementation PLFRepDetailViewController
 
-@synthesize repNameField, chamberField, stateField, districtField, partyField, twitterIdField, facebookIdField, representative;
+@synthesize repNameField, chamberField, stateField, districtField, partyField, twitterIdField, facebookIdField, representative, repImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,6 +48,33 @@
     partyField.text = representative.party;
     twitterIdField.text = [NSString stringWithFormat:@"twitter id: @%@", representative.twitterId];
     facebookIdField.text = [NSString stringWithFormat:@"facebook id: %@",representative.facebookId];
+    
+    NSString *imageUrl = [representative getPhotoUrl:PLFRepresentativePhotoSizeLarge];
+    
+    UIImage *placeHolderImage = [UIImage imageNamed:[NSString stringWithFormat:@"repImageDefault%d", PLFRepresentativePhotoSizeLarge]];
+
+    
+    if (imageUrl != nil)
+    {
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:imageUrl]];
+        
+        __weak UIImageView *weakImageView = repImageView;
+        
+        [repImageView setImageWithURLRequest:request placeholderImage:placeHolderImage success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+            weakImageView.image = image;
+            NSLog(@"Image success");
+            
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+            NSLog(@"Representative image failure %@", error.description);
+        }];
+    }
+    else
+    {
+        repImageView.image = placeHolderImage;
+    }
 }
+
+
+
 
 @end

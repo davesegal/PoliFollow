@@ -16,10 +16,11 @@
 static NSString *const SUNLIGHT_API_URL = @"http://congress.api.sunlightfoundation.com/";
 static NSString *const OPEN_STATES_API_URL = @"http://openstates.org/api/v1/";
 static NSString *const VOTE_SMART_API_URL = @"";
-static NSString *const OPEN_GOV_URL = @"";
+
 static BOOL isStateRequestComplete;
 static BOOL isFedRequestComplete;
 static BOOL isDataAvailable;
+
 
 
 @implementation PLFSunlightDataRequester
@@ -155,5 +156,6 @@ static BOOL isDataAvailable;
         [nc postNotificationName:PLFDataRequesterDidProcessDataNotification object:self userInfo:@{PLFDataRequesterRequestSuccessKey: (isDataAvailable) ? @YES : @NO}];
     }
 }
+
 
 @end

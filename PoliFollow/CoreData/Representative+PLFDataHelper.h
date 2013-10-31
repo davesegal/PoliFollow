@@ -17,6 +17,13 @@ typedef NS_OPTIONS(NSInteger, PLFRepresentativeType)
     PLFRepresentativeTypeUnknown = 1 << 4
 };
 
+typedef NS_ENUM(NSInteger, PLFRepresentativePhotoSize)
+{
+    PLFRepresentativePhotoSizeSmall = 50,
+    PLFRepresentativePhotoSizeMed = 100,
+    PLFRepresentativePhotoSizeLarge = 200
+};
+
 @interface Representative (PLFDataHelper)
 
 //FOUNDATION_EXTERN NSString *const PLFRepresentativeFederalSen;
@@ -25,5 +32,6 @@ typedef NS_OPTIONS(NSInteger, PLFRepresentativeType)
 
 
 - (void)deserializeData:(NSDictionary *)repData ofRepType:(NSInteger)repType;
+- (NSString *)getPhotoUrl:(NSInteger)size;
 
 @end

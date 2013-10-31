@@ -8,10 +8,8 @@
 
 #import "Representative+PLFDataHelper.h"
 
-
-//NSString *const PLFRepresentativeFederalSen = @"US Senate";
-//NSString *const PLFRepresentativeFederalRep = @"US House of Reps";
-//NSString *const PLFRepresentativeStateRep = @"State Rep";
+static NSString *const OPEN_GOV_URL = @"https://www.govtrack.us";
+static NSString *const OPEN_GOV_PHOTOS = @"/data/photos/";
 
 @implementation Representative (PLFDataHelper)
 
@@ -74,5 +72,17 @@
     }
 }
 
+- (NSString *)getPhotoUrl:(NSInteger)size
+{
+    https://www.govtrack.us/data/photos/300002-100px.jpeg
+    if (![self.govTrackId isEqualToString:@""])
+    {
+        return [NSString stringWithFormat:@"%@%@%@-%dpx.jpeg", OPEN_GOV_URL, OPEN_GOV_PHOTOS, self.govTrackId, size];
+    }
+    else
+    {
+        return nil;
+    }
+}
 
 @end

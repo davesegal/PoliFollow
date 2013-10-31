@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4400A5DC181EC4F400E53ADD /* Representative+PLFDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4400A5DB181EC4F400E53ADD /* Representative+PLFDataHelper.m */; };
-		4400A5DF181EC70300E53ADD /* Representative.m in Sources */ = {isa = PBXBuildFile; fileRef = 4400A5DE181EC70300E53ADD /* Representative.m */; };
 		4403550E181862E80051E7C1 /* PLFAbstractDataRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 4403550D181862E80051E7C1 /* PLFAbstractDataRequester.m */; };
 		44283642181197F000B6FFF9 /* CoreDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 44283641181197F000B6FFF9 /* CoreDataUtil.m */; };
 		4428364818147D8A00B6FFF9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4428364718147D8A00B6FFF9 /* User.m */; };
@@ -17,6 +16,7 @@
 		4428365F1816D08500B6FFF9 /* PLFSunlightDataRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 4428365D1816D08500B6FFF9 /* PLFSunlightDataRequester.m */; };
 		444FB7CA181F3C67006C691C /* PLFFindOnMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 444FB7C9181F3C67006C691C /* PLFFindOnMapViewController.m */; };
 		444FB7CC181F5371006C691C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444FB7CB181F5371006C691C /* MapKit.framework */; };
+		444FB7D81821E5D0006C691C /* Representative.m in Sources */ = {isa = PBXBuildFile; fileRef = 444FB7D71821E5D0006C691C /* Representative.m */; };
 		447B4A1E1807538000EF07D4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 447B4A1D1807538000EF07D4 /* Foundation.framework */; };
 		447B4A201807538000EF07D4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 447B4A1F1807538000EF07D4 /* CoreGraphics.framework */; };
 		447B4A221807538000EF07D4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 447B4A211807538000EF07D4 /* UIKit.framework */; };
@@ -54,8 +54,6 @@
 /* Begin PBXFileReference section */
 		4400A5DA181EC4F400E53ADD /* Representative+PLFDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Representative+PLFDataHelper.h"; path = "PoliFollow/CoreData/Representative+PLFDataHelper.h"; sourceTree = "<group>"; };
 		4400A5DB181EC4F400E53ADD /* Representative+PLFDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Representative+PLFDataHelper.m"; path = "PoliFollow/CoreData/Representative+PLFDataHelper.m"; sourceTree = "<group>"; };
-		4400A5DD181EC70300E53ADD /* Representative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Representative.h; path = PoliFollow/CoreData/Representative.h; sourceTree = "<group>"; };
-		4400A5DE181EC70300E53ADD /* Representative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Representative.m; path = PoliFollow/CoreData/Representative.m; sourceTree = "<group>"; };
 		4403550C181862E80051E7C1 /* PLFAbstractDataRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLFAbstractDataRequester.h; path = requests/PLFAbstractDataRequester.h; sourceTree = "<group>"; };
 		4403550D181862E80051E7C1 /* PLFAbstractDataRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PLFAbstractDataRequester.m; path = requests/PLFAbstractDataRequester.m; sourceTree = "<group>"; };
 		44283640181197F000B6FFF9 /* CoreDataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataUtil.h; path = PoliFollow/CoreData/CoreDataUtil.h; sourceTree = "<group>"; };
@@ -71,6 +69,8 @@
 		444FB7C8181F3C66006C691C /* PLFFindOnMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLFFindOnMapViewController.h; sourceTree = "<group>"; };
 		444FB7C9181F3C67006C691C /* PLFFindOnMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLFFindOnMapViewController.m; sourceTree = "<group>"; };
 		444FB7CB181F5371006C691C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		444FB7D61821E5D0006C691C /* Representative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Representative.h; path = PoliFollow/CoreData/Representative.h; sourceTree = "<group>"; };
+		444FB7D71821E5D0006C691C /* Representative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Representative.m; path = PoliFollow/CoreData/Representative.m; sourceTree = "<group>"; };
 		447B4A1A1807538000EF07D4 /* PoliFollow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoliFollow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		447B4A1D1807538000EF07D4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		447B4A1F1807538000EF07D4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -250,8 +250,8 @@
 		447B4AC01810474D00EF07D4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				4400A5DD181EC70300E53ADD /* Representative.h */,
-				4400A5DE181EC70300E53ADD /* Representative.m */,
+				444FB7D61821E5D0006C691C /* Representative.h */,
+				444FB7D71821E5D0006C691C /* Representative.m */,
 				447B4ABD181045B700EF07D4 /* PLFCoreData.xcdatamodeld */,
 				4428364618147D8A00B6FFF9 /* User.h */,
 				4428364718147D8A00B6FFF9 /* User.m */,
@@ -397,7 +397,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				447B4A61180DA3FE00EF07D4 /* PLFFindRepController.m in Sources */,
-				4400A5DF181EC70300E53ADD /* Representative.m in Sources */,
 				447B4A341807538100EF07D4 /* PLFViewController.m in Sources */,
 				44CEB1BB181A3B62005B5DB5 /* PLFRepDetailViewController.m in Sources */,
 				44283642181197F000B6FFF9 /* CoreDataUtil.m in Sources */,
@@ -413,6 +412,7 @@
 				444FB7CA181F3C67006C691C /* PLFFindOnMapViewController.m in Sources */,
 				4400A5DC181EC4F400E53ADD /* Representative+PLFDataHelper.m in Sources */,
 				447B4AC918105B2E00EF07D4 /* PLFMyRepsTableController.m in Sources */,
+				444FB7D81821E5D0006C691C /* Representative.m in Sources */,
 				447B4A2E1807538100EF07D4 /* PLFAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

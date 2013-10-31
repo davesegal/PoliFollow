@@ -15,6 +15,8 @@
 
 static NSString *const SUNLIGHT_API_URL = @"http://congress.api.sunlightfoundation.com/";
 static NSString *const OPEN_STATES_API_URL = @"http://openstates.org/api/v1/";
+static NSString *const VOTE_SMART_API_URL = @"";
+static NSString *const OPEN_GOV_URL = @"";
 static BOOL isStateRequestComplete;
 static BOOL isFedRequestComplete;
 static BOOL isDataAvailable;
@@ -63,21 +65,7 @@ static BOOL isDataAvailable;
              {
                  NSLog(@"item  : %@", item);
                  Representative *rep1 = (Representative *)[NSEntityDescription insertNewObjectForEntityForName:@"Representative" inManagedObjectContext:context];
-                 rep1.district = ( item[@"district"] == [NSNull null] ) ? @"" : [NSString stringWithFormat:@"%@", item[@"district"]];
-                 rep1.email = @"";
-                 rep1.firstName = ( item[@"first_name"] == [NSNull null] ) ? @"" : item[@"first_name"];
-                 rep1.lastName = ( item[@"last_name"] == [NSNull null] ) ? @"" : item[@"last_name"];
-                 rep1.name = [NSString stringWithFormat:@"%@ %@", rep1.firstName, rep1.lastName];
-                 rep1.party = ( item[@"party"] == [NSNull null] ) ? @"" : item[@"party"];
-                 rep1.phone = ( item[@"phone"] == [NSNull null] ) ? @"" : item[@"phone"];
-                 rep1.urlLink = @"";
-                 rep1.chamber = ( item[@"chamber"] == [NSNull null] ) ? @"" : item[@"chamber"];
-                 rep1.website = ( item[@"website"] == [NSNull null] ) ? @"" : item[@"website"];
-                 rep1.address = ( item[@"office"] == [NSNull null] ) ? @"" : item[@"office"];
-                 rep1.state = ( item[@"state"] == [NSNull null] ) ? @"" : item[@"state"];
-                 rep1.facebookId = ( item[@"facebook_id"] == [NSNull null] ) ? @"" : item[@"facebook_id"];
-                 rep1.twitterId = ( item[@"twitter_id"] == [NSNull null] ) ? @"" : item[@"twitter_id"];
-                 rep1.category = PLFRepresentiveStateRep;
+                 [rep1 deserializeData:item ofRepType:PLFRepresentativeTypeStateRep ];
              }
              
              NSError *error;
@@ -124,21 +112,7 @@ static BOOL isDataAvailable;
                  {
                      NSLog(@"item  : %@", item);
                      Representative *rep1 = (Representative *)[NSEntityDescription insertNewObjectForEntityForName:@"Representative" inManagedObjectContext:context];
-                     rep1.district = ( item[@"district"] == [NSNull null] ) ? @"" : [NSString stringWithFormat:@"%@", item[@"district"]];
-                     rep1.email = @"";
-                     rep1.firstName = ( item[@"first_name"] == [NSNull null] ) ? @"" : item[@"first_name"];
-                     rep1.lastName = ( item[@"last_name"] == [NSNull null] ) ? @"" : item[@"last_name"];
-                     rep1.name = [NSString stringWithFormat:@"%@ %@", rep1.firstName, rep1.lastName];
-                     rep1.party = ( item[@"party"] == [NSNull null] ) ? @"" : item[@"party"];
-                     rep1.phone = ( item[@"phone"] == [NSNull null] ) ? @"" : item[@"phone"];
-                     rep1.urlLink = @"";
-                     rep1.chamber = ( item[@"chamber"] == [NSNull null] ) ? @"" : item[@"chamber"];
-                     rep1.website = ( item[@"website"] == [NSNull null] ) ? @"" : item[@"website"];
-                     rep1.address = ( item[@"office"] == [NSNull null] ) ? @"" : item[@"office"];
-                     rep1.state = ( item[@"state"] == [NSNull null] ) ? @"" : item[@"state"];
-                     rep1.facebookId = ( item[@"facebook_id"] == [NSNull null] ) ? @"" : item[@"facebook_id"];
-                     rep1.twitterId = ( item[@"twitter_id"] == [NSNull null] ) ? @"" : item[@"twitter_id"];
-                     [rep1 populateRepCategory];
+                     [rep1 deserializeData:item ofRepType:PLFRepresentativeTypeFederalRep];
                  }
                  
                  NSError *error;

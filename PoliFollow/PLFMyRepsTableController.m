@@ -19,7 +19,7 @@
 
 @implementation PLFMyRepsTableController
 
-@synthesize repList, fedReps, fedSens, stateReps, managedObjectContext;
+@synthesize fedReps, fedSens, stateReps, managedObjectContext;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,15 +34,15 @@
 {
     [super viewDidLoad];
     
-    repList = [CoreDataUtil getObjectsForEntity:@"Representative" withSortKey:@"name" andSortAscending:YES andContext:managedObjectContext];
+    //repList = [CoreDataUtil getObjectsForEntity:@"Representative" withSortKey:@"name" andSortAscending:YES andContext:managedObjectContext];
     
-    NSPredicate *fedRepPredicate = [NSPredicate predicateWithFormat:@"category = %@", PLFRepresentiveFederalRep];
-    fedReps = [CoreDataUtil searchObjectsForEntity:@"Representative" withPredicate:fedRepPredicate andSortKey:@"name" andSortAscending:YES andContext:managedObjectContext];
+    NSPredicate *fedHousePredicate = [NSPredicate predicateWithFormat:@"category = %d", PLFRepresentativeTypeFederalHouse];
+    fedReps = [CoreDataUtil searchObjectsForEntity:@"Representative" withPredicate:fedHousePredicate andSortKey:@"name" andSortAscending:YES andContext:managedObjectContext];
     
-    NSPredicate *fedSenPredicate = [NSPredicate predicateWithFormat:@"category = %@", PLFRepresentiveFederalSen];
+    NSPredicate *fedSenPredicate = [NSPredicate predicateWithFormat:@"category = %d", PLFRepresentativeTypeFederalSenate];
     fedSens = [CoreDataUtil searchObjectsForEntity:@"Representative" withPredicate:fedSenPredicate andSortKey:@"name" andSortAscending:YES andContext:managedObjectContext];
     
-    NSPredicate *stateRepPredicate = [NSPredicate predicateWithFormat:@"category = %@", PLFRepresentiveStateRep];
+    NSPredicate *stateRepPredicate = [NSPredicate predicateWithFormat:@"category = %d", PLFRepresentativeTypeStateRep];
     stateReps = [CoreDataUtil searchObjectsForEntity:@"Representative" withPredicate:stateRepPredicate andSortKey:@"name" andSortAscending:YES andContext:managedObjectContext];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -100,7 +100,7 @@
         return [fedSens count];
     }
     
-    return [repList count];
+    //return [repList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -9,26 +9,70 @@
 #import "Representative+PLFDataHelper.h"
 
 
-NSString *const PLFRepresentiveFederalSen = @"US Senate";
-NSString *const PLFRepresentiveFederalRep = @"US House of Reps";
-NSString *const PLFRepresentiveStateRep = @"State Rep";
+//NSString *const PLFRepresentativeFederalSen = @"US Senate";
+//NSString *const PLFRepresentativeFederalRep = @"US House of Reps";
+//NSString *const PLFRepresentativeStateRep = @"State Rep";
 
 @implementation Representative (PLFDataHelper)
 
-- (void)populateRepCategory
+
+- (void)deserializeData:(NSDictionary *)repData ofRepType:(NSInteger)repType
 {
+    [self deserializeCommonData:repData];
+    switch (repType) {
+        case PLFRepresentativeTypeFederalRep:
+        case PLFRepresentativeTypeFederalHouse:
+        case PLFRepresentativeTypeFederalSenate:
+            [self deserializeFedData:repData];
+            break;
+            
+        case PLFRepresentativeTypeStateRep:
+            [self deserializeStateData:repData];
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+
+- (void)deserializeCommonData:(NSDictionary *)repData
+{
+    self.district = ( repData[@"district"] == [NSNull null] ) ? @"" : [NSString stringWithFormat:@"%@", repData[@"district"]];
+    self.email = @"";
+    self.firstName = ( repData[@"first_name"] == [NSNull null] ) ? @"" : repData[@"first_name"];
+    self.lastName = ( repData[@"last_name"] == [NSNull null] ) ? @"" : repData[@"last_name"];
+    self.name = [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
+    self.party = ( repData[@"party"] == [NSNull null] ) ? @"" : repData[@"party"];
+    self.phone = ( repData[@"phone"] == [NSNull null] ) ? @"" : repData[@"phone"];
+    self.urlLink = @"";
+    self.chamber = ( repData[@"chamber"] == [NSNull null] ) ? @"" : repData[@"chamber"];
+    self.website = ( repData[@"website"] == [NSNull null] ) ? @"" : repData[@"website"];
+    self.address = ( repData[@"office"] == [NSNull null] ) ? @"" : repData[@"office"];
+    self.state = ( repData[@"state"] == [NSNull null] ) ? @"" : repData[@"state"];
+    self.facebookId = ( repData[@"facebook_id"] == [NSNull null] ) ? @"" : repData[@"facebook_id"];
+    self.twitterId = ( repData[@"twitter_id"] == [NSNull null] ) ? @"" : repData[@"twitter_id"];
+    
+    self.govTrackId = (repData[@"govtrack_id"] == [NSNull null] ) ? @"" : repData[@"govtrack_id"];
+}
+
+- (void)deserializeStateData:(NSDictionary *)repData
+{
+    self.category = PLFRepresentativeTypeStateRep;
+}
+
+- (void)deserializeFedData:(NSDictionary *)repData
+{
+    self.voteSmartId = (repData[@"votesmart_id"] == [NSNull null] ) ? @"" : [NSString stringWithFormat:@"%@", repData[@"votesmart_id"]];
     if ([self.chamber isEqualToString:@"senate"])
     {
-        self.category = PLFRepresentiveFederalSen;
+        self.category = PLFRepresentativeTypeFederalSenate;
     }
     else if ([self.chamber isEqualToString:@"house"])
     {
-        self.category = PLFRepresentiveFederalRep;
-    }
-    else
-    {
-        self.category = @"";
+        self.category = PLFRepresentativeTypeFederalHouse;
     }
 }
+
 
 @end

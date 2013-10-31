@@ -8,13 +8,22 @@
 
 #import "Representative.h"
 
+typedef NS_OPTIONS(NSInteger, PLFRepresentativeType)
+{
+    PLFRepresentativeTypeFederalRep = 1 << 0,
+    PLFRepresentativeTypeFederalSenate = 1 << 1,
+    PLFRepresentativeTypeFederalHouse = 1 << 2,
+    PLFRepresentativeTypeStateRep = 1 << 3,
+    PLFRepresentativeTypeUnknown = 1 << 4
+};
+
 @interface Representative (PLFDataHelper)
 
-FOUNDATION_EXTERN NSString *const PLFRepresentiveFederalSen;
-FOUNDATION_EXTERN NSString *const PLFRepresentiveFederalRep;
-FOUNDATION_EXTERN NSString *const PLFRepresentiveStateRep;
+//FOUNDATION_EXTERN NSString *const PLFRepresentativeFederalSen;
+//FOUNDATION_EXTERN NSString *const PLFRepresentativeFederalRep;
+//FOUNDATION_EXTERN NSString *const PLFRepresentativeStateRep;
 
-- (void)populateRepCategory;
 
+- (void)deserializeData:(NSDictionary *)repData ofRepType:(NSInteger)repType;
 
 @end

@@ -2,7 +2,7 @@
 //  Representative.m
 //  PoliFollow
 //
-//  Created by David Segal on 10/28/13.
+//  Created by David Segal on 10/30/13.
 //  Copyright (c) 2013 David Segal. All rights reserved.
 //
 
@@ -26,5 +26,7 @@
 @dynamic twitterId;
 @dynamic urlLink;
 @dynamic website;
+@dynamic govTrackId;
+@dynamic voteSmartId;
 
 @end

@@ -12,18 +12,25 @@
 #import "PLFMyRepsTableController.h"
 #import "PLFDataRequestNotifications.h"
 #import "PLFFindOnMapViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface PLFFindRepController ()
+@interface PLFFindRepController () <UIAlertViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate>
 {
     UIActivityIndicatorView *activityView;
     CLLocationManager *locationManager;
 }
 
+@property (nonatomic, strong) IBOutlet UITextField *zipcodeField;
+@property (nonatomic, strong) IBOutlet UIButton *zipButton;
+@property (nonatomic, strong) IBOutlet UIButton *useLocationButton;
+@property (strong, nonatomic) IBOutlet UIButton *useMapButton;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+
 @end
 
 @implementation PLFFindRepController
 
-@synthesize managedObjectContext, zipcodeField, zipButton, useLocationButton, scrollView;
+@synthesize managedObjectContext, zipcodeField, zipButton, useLocationButton, useMapButton, scrollView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,6 +49,7 @@
 	locationManager.distanceFilter = kCLDistanceFilterNone;
 	locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     zipcodeField.delegate = self;
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -55,8 +63,11 @@
     
     zipButton.enabled = YES;
     useLocationButton.enabled = YES;
+    useMapButton.enabled = YES;
     zipcodeField.enabled = YES;
     zipcodeField.text = @"";
+    
+    self.scrollView.contentOffset = CGPointZero;
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,6 +81,7 @@
     zipcodeField.enabled = NO;
     zipButton.enabled = NO;
     useLocationButton.enabled = NO;
+    useMapButton.enabled = NO;
 
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(requestProcessed:) name:PLFDataRequesterDidProcessDataNotification object:nil];
@@ -90,6 +102,7 @@
     zipcodeField.enabled = NO;
     zipButton.enabled = NO;
     useLocationButton.enabled = NO;
+    useMapButton.enabled = NO;
 	[locationManager startUpdatingLocation];
     
     activityView=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -176,35 +189,34 @@
     zipcodeField.enabled = YES;
     zipButton.enabled = YES;
     useLocationButton.enabled = YES;
+    useMapButton.enabled = YES;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    
+    
 }
 
 
-- (void)keyboardDidShow:(NSNotification *)notification
-{
-    NSDictionary* info = [notification userInfo];
+- (void)keyboardWasShown:(NSNotification*)aNotification {
+    NSDictionary* info = [aNotification userInfo];
     CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0);
-    scrollView.contentInset = contentInsets;
-    
-    CGRect aRect = self.view.frame;
-    aRect.size.height -= keyboardSize.height;
-    if (!CGRectContainsPoint(aRect, zipcodeField.frame.origin) ) {
-        [self.scrollView scrollRectToVisible:zipcodeField.frame animated:YES];
-    }
+    [scrollView setContentOffset:CGPointMake(0.0, keyboardSize.height) animated:YES];
+    useMapButton.enabled = NO;
+    useLocationButton.enabled = NO;
 }
+
 
 - (void)keyboardWillHide:(NSNotification *)notification
 {
-    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-    scrollView.contentInset = contentInsets;
+
+    [scrollView setContentOffset:CGPointMake(0.0, 0.0) animated:YES];
+    [self removeTextFieldObservers];
 
 }
 

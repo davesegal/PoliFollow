@@ -14,6 +14,7 @@
 		442836531816242900B6FFF9 /* PLFAPIKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 442836511816242900B6FFF9 /* PLFAPIKeys.m */; };
 		4428365E1816D08500B6FFF9 /* PLFDataRequestNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 4428365B1816D08500B6FFF9 /* PLFDataRequestNotifications.m */; };
 		4428365F1816D08500B6FFF9 /* PLFSunlightDataRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 4428365D1816D08500B6FFF9 /* PLFSunlightDataRequester.m */; };
+		4449C1F11823725600E7F706 /* PLFFindRepScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4449C1F01823725500E7F706 /* PLFFindRepScrollView.m */; };
 		444FB7CA181F3C67006C691C /* PLFFindOnMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 444FB7C9181F3C67006C691C /* PLFFindOnMapViewController.m */; };
 		444FB7CC181F5371006C691C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 444FB7CB181F5371006C691C /* MapKit.framework */; };
 		444FB7D81821E5D0006C691C /* Representative.m in Sources */ = {isa = PBXBuildFile; fileRef = 444FB7D71821E5D0006C691C /* Representative.m */; };
@@ -66,6 +67,8 @@
 		4428365B1816D08500B6FFF9 /* PLFDataRequestNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PLFDataRequestNotifications.m; path = requests/PLFDataRequestNotifications.m; sourceTree = "<group>"; };
 		4428365C1816D08500B6FFF9 /* PLFSunlightDataRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLFSunlightDataRequester.h; path = requests/PLFSunlightDataRequester.h; sourceTree = "<group>"; };
 		4428365D1816D08500B6FFF9 /* PLFSunlightDataRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PLFSunlightDataRequester.m; path = requests/PLFSunlightDataRequester.m; sourceTree = "<group>"; };
+		4449C1EF1823725500E7F706 /* PLFFindRepScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLFFindRepScrollView.h; path = PoliFollow/PLFFindRepScrollView.h; sourceTree = "<group>"; };
+		4449C1F01823725500E7F706 /* PLFFindRepScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PLFFindRepScrollView.m; path = PoliFollow/PLFFindRepScrollView.m; sourceTree = "<group>"; };
 		444FB7C8181F3C66006C691C /* PLFFindOnMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLFFindOnMapViewController.h; sourceTree = "<group>"; };
 		444FB7C9181F3C67006C691C /* PLFFindOnMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLFFindOnMapViewController.m; sourceTree = "<group>"; };
 		444FB7CB181F5371006C691C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -145,6 +148,8 @@
 		447B4A111807538000EF07D4 = {
 			isa = PBXGroup;
 			children = (
+				4449C1EF1823725500E7F706 /* PLFFindRepScrollView.h */,
+				4449C1F01823725500E7F706 /* PLFFindRepScrollView.m */,
 				447B4AC01810474D00EF07D4 /* CoreData */,
 				447B4A231807538000EF07D4 /* PoliFollow */,
 				447B4A421807538100EF07D4 /* PoliFollowTests */,
@@ -401,6 +406,7 @@
 				44CEB1BB181A3B62005B5DB5 /* PLFRepDetailViewController.m in Sources */,
 				44283642181197F000B6FFF9 /* CoreDataUtil.m in Sources */,
 				447B4A5E1808919F00EF07D4 /* PLFGenericDataRequester.m in Sources */,
+				4449C1F11823725600E7F706 /* PLFFindRepScrollView.m in Sources */,
 				447B4A2A1807538100EF07D4 /* main.m in Sources */,
 				4428364818147D8A00B6FFF9 /* User.m in Sources */,
 				4403550E181862E80051E7C1 /* PLFAbstractDataRequester.m in Sources */,

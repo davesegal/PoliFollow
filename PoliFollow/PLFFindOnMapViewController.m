@@ -10,13 +10,18 @@
 #import "PLFSunlightDataRequester.h"
 #import "PLFDataRequestNotifications.h"
 #import "PLFMyRepsTableController.h"
+#import <MapKit/MapKit.h>
 
-@interface PLFFindOnMapViewController ()
+@interface PLFFindOnMapViewController ()<MKMapViewDelegate, UIGestureRecognizerDelegate>
 {
     UIActivityIndicatorView *activityView;
     BOOL isUpdatingUserLocation;
     
 }
+
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
+
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *useMapLocationButton;
 
 @end
 

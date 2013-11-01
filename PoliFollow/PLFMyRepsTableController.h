@@ -11,9 +11,7 @@
 @interface PLFMyRepsTableController : UITableViewController
 
 //@property (nonatomic, strong) NSMutableArray *repList;
-@property (nonatomic, strong) NSMutableArray *fedReps;
-@property (nonatomic, strong) NSMutableArray *fedSens;
-@property (nonatomic, strong) NSMutableArray *stateReps;
+
 @property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
 
 @end

@@ -7,13 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MapKit/MapKit.h>
 
-@interface PLFFindOnMapViewController : UIViewController <MKMapViewDelegate, UIGestureRecognizerDelegate>
 
-@property (strong, nonatomic) IBOutlet MKMapView *mapView;
-
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *useMapLocationButton;
+@interface PLFFindOnMapViewController : UIViewController
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
